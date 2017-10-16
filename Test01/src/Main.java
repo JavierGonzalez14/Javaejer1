@@ -88,6 +88,6 @@ public class Main {
     else 
 	System.out.println("Ni modo!");
     
-    System.out.println("\n\n");
+    //System.out.println("\n\n");
 	}
 }
