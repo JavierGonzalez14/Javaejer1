@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginService
@@ -33,9 +34,13 @@ public class LoginService extends HttpServlet {
 		Login login = new Login();
 		login.setCorreo(correo);
 		login.setPassword("13579");
+		HttpSession sesion;
 		if(login.verificarPassword(password))
 		{
 			response.sendRedirect("success.jsp");
+			sesion = (HttpSession) request.getSession();
+			sesion.setMaxInactiveInterval(10);
+			System.out.println(sesion.getId());
 		}
 		else {
 			response.sendRedirect("error.jsp");
